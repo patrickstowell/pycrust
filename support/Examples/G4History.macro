@@ -1,7 +1,7 @@
 /run/verbose 0
 /run/initialize
-/vis/open Jupyter 600x600-0+0
-/vis/sceneHandler/create Jupyter
+/vis/open K3DJupyter 600x600-0+0
+/vis/sceneHandler/create K3DJupyter
 /vis/viewer/create ! ! 600x600-0+0
 /vis/drawVolume
 /vis/scene/create
@@ -9,40 +9,38 @@
 /vis/sceneHandler/attach
 /vis/viewer/refresh
 /vis/viewer/set/autoRefresh true
-/vis/viewer/set/viewpointVector -1 0 0
-/vis/viewer/set/lightsVector -1 0 0
-/vis/viewer/set/style wireframe
-/vis/viewer/set/auxiliaryEdge true
-/vis/viewer/set/lineSegmentsPerCircle 100
 /vis/scene/add/trajectories rich
 /tracking/storeTrajectory 3
 /vis/scene/notifyHandlers
 /vis/modeling/trajectories/create/drawByParticleID
-/vis/scene/endOfEventAction accumulate
-/vis/set/textLayout
-/vis/set/textColour
-/vis/scene/add/scale
-/vis/scene/notifyHandlers
-/vis/scene/add/axes
-/vis/scene/notifyHandlers
-/vis/filtering/trajectories/create/encounteredVolumeFilter
-/vis/filtering/trajectories/encounteredVolumeFilter-0/add world
+/vis/modeling/trajectories/drawByParticleID-0/default/setDrawStepPts True
 /vis/scene/notifyHandlers scene-0
-/vis/filtering/trajectories/create/particleFilter
-/vis/filtering/trajectories/particleFilter-0/add mu-
+/vis/modeling/trajectories/drawByParticleID-0/default/setStepPtsSize 1
 /vis/scene/notifyHandlers scene-0
-/vis/filtering/trajectories/particleFilter-0/add mu-
+/vis/modeling/trajectories/drawByParticleID-0/set e+ white
 /vis/scene/notifyHandlers scene-0
-/vis/filtering/trajectories/particleFilter-0/invert true
+/vis/modeling/trajectories/drawByParticleID-0/set e- white
 /vis/scene/notifyHandlers scene-0
-/vis/set/colour red
-/vis/set/lineWidth 2
-/vis/scene/add/frame
-/vis/scene/notifyHandlers
-/vis/set/colour
-/vis/set/lineWidth
-/vis/viewer/set/style surface
-/vis/viewer/set/hiddenMarker true
-/vis/viewer/set/viewpointThetaPhi 120 150
-/vis/viewer/set/autoRefresh true
+/vis/modeling/trajectories/drawByParticleID-0/set gamma yellow
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set neutron magenta
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set proton blue
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set pi+ red
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set pi- red
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set pi0 grey
+/vis/scene/notifyHandlers scene-0
+/CRY/input returnNeutrons 1
+/CRY/input returnProtons 1
+/CRY/input returnGammas 1
+/CRY/input returnPions 1
+/CRY/input returnKaons 1
+/CRY/input date 7-1-2012
+/CRY/input latitude 90.0
+/CRY/input altitude 0
+/CRY/input subboxLength 10
+/CRY/update
 /vis/scene/notifyHandlers scene-0
