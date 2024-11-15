@@ -33,6 +33,10 @@
 /vis/scene/notifyHandlers scene-0
 /vis/modeling/trajectories/drawByParticleID-0/set pi0 grey
 /vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set mu- red
+/vis/scene/notifyHandlers scene-0
+/vis/modeling/trajectories/drawByParticleID-0/set mu+ red
+/vis/scene/notifyHandlers scene-0
 /CRY/input returnNeutrons 1
 /CRY/input returnProtons 1
 /CRY/input returnGammas 1
@@ -41,6 +45,6 @@
 /CRY/input date 7-1-2012
 /CRY/input latitude 90.0
 /CRY/input altitude 0
-/CRY/input subboxLength 10
+/CRY/input subboxLength 4
 /CRY/update
 /vis/scene/notifyHandlers scene-0

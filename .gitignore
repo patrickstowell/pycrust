@@ -1,5 +1,8 @@
 # Prerequisites
 *.d
+install
+.G4temp.cmd
+G4History.macro
 
 # Compiled Object files
 *.slo

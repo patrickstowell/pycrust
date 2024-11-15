@@ -30,7 +30,7 @@ class G4Event;
 class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
-    PrimaryGeneratorAction(const char * filename);
+    PrimaryGeneratorAction(const char * filename, G4double offset=0);
     ~PrimaryGeneratorAction();
 
   public:
@@ -46,6 +46,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     CRYGenerator* gen;
     G4int InputState;
     PrimaryGeneratorMessenger* gunMessenger;
+    G4double fVerticalOffset;
 };
 
 #endif

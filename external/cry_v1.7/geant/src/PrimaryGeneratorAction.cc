@@ -1,3 +1,4 @@
+#include "G4SystemOfUnits.hh"
 //******************************************************************************
 // PrimaryGeneratorAction.cc
 //
@@ -12,8 +13,10 @@ using namespace std;
 #include "G4Event.hh"
 
 //----------------------------------------------------------------------------//
-PrimaryGeneratorAction::PrimaryGeneratorAction(const char *inputfile)
+PrimaryGeneratorAction::PrimaryGeneratorAction(const char *inputfile, G4double offset)
 {
+  fVerticalOffset = offset;
+
   // define a particle gun
   particleGun = new G4ParticleGun();
 
@@ -121,27 +124,27 @@ void PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   gen->genEvent(vect);
 
   //....debug output
-  G4cout << "\nEvent=" << anEvent->GetEventID() << " "
-         << "CRY generated nparticles=" << vect->size()
-         << G4endl;
+  // G4cout << "\nEvent=" << anEvent->GetEventID() << " "
+  //        << "CRY generated nparticles=" << vect->size()
+  //        << G4endl;
 
   for ( unsigned j=0; j<vect->size(); j++) {
     particleName=CRYUtils::partName((*vect)[j]->id());
 
     //....debug output  
-    cout << "  "          << particleName << " "
-         << "charge="      << (*vect)[j]->charge() << " "
-         << setprecision(4)
-         << "energy (MeV)=" << (*vect)[j]->ke()*MeV << " "
-         << "pos (m)"
-         << G4ThreeVector((*vect)[j]->x(), (*vect)[j]->y(), (*vect)[j]->z())
-         << " " << "direction cosines "
-         << G4ThreeVector((*vect)[j]->u(), (*vect)[j]->v(), (*vect)[j]->w())
-         << " " << endl;
+    // cout << "  "          << particleName << " "
+    //      << "charge="      << (*vect)[j]->charge() << " "
+    //      << setprecision(4)
+    //      << "energy (MeV)=" << (*vect)[j]->ke()*MeV << " "
+    //      << "pos (m)"
+    //      << G4ThreeVector((*vect)[j]->x(), (*vect)[j]->y(), (*vect)[j]->z())
+    //      << " " << "direction cosines "
+    //      << G4ThreeVector((*vect)[j]->u(), (*vect)[j]->v(), (*vect)[j]->w())
+    //      << " " << endl;
 
     particleGun->SetParticleDefinition(particleTable->FindParticle((*vect)[j]->PDGid()));
     particleGun->SetParticleEnergy((*vect)[j]->ke()*MeV);
-    particleGun->SetParticlePosition(G4ThreeVector((*vect)[j]->x()*m, (*vect)[j]->y()*m, (*vect)[j]->z()*m));
+    particleGun->SetParticlePosition(G4ThreeVector((*vect)[j]->x()*m, (*vect)[j]->y()*m, (*vect)[j]->z()*m+fVerticalOffset));
     particleGun->SetParticleMomentumDirection(G4ThreeVector((*vect)[j]->u(), (*vect)[j]->v(), (*vect)[j]->w()));
     particleGun->SetParticleTime((*vect)[j]->t());
     particleGun->GeneratePrimaryVertex(anEvent);
