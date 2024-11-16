@@ -3,7 +3,7 @@
 install
 .G4temp.cmd
 G4History.macro
-
+.g4magic.*
 # Compiled Object files
 *.slo
 *.lo
